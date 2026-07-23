@@ -6,8 +6,22 @@ author: EnyoScripts
 description: FiveM standalone RTS game mode. Platoon-based combat, 5 battlefield maps, 24 unit types, CPU AI opponents, SBMM matchmaking & anti-cheat containment.
 
 tasks:
-  # Trigger database setup form
+  # Prepare Database
   - action: connect_database
+
+  # Download recipe assets
+  - action: download_github
+    dest: ./tmp/recipe
+    ref: main
+    src: https://github.com/FiveM-RTS-WarfareTactics/txAdminRecipe
+
+  - action: move_path
+    src: ./tmp/recipe/server.cfg
+    dest: ./server.cfg
+
+  - action: move_path
+    src: ./tmp/recipe/rts-logo.png
+    dest: ./myLogo.png
 
   # Download CFX default resources
   - action: download_github
