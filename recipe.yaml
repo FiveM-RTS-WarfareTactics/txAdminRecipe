@@ -68,7 +68,7 @@ tasks:
     path: ./tmp/oxmysql.zip
     url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
   - action: unzip
-    dest: ./resources/[standalone]/oxmysql
+    dest: ./resources/[standalone]
     src: ./tmp/oxmysql.zip
 
   - action: download_github
