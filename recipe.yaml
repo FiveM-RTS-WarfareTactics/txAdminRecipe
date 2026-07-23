@@ -5,10 +5,25 @@ version: 2.1.0
 author: EnyoScripts
 description: FiveM standalone RTS game mode. Platoon-based combat, 5 battlefield maps, 24 unit types, CPU AI opponents, SBMM matchmaking & anti-cheat containment.
 
-tasks:
-  # Prepare Database
-  - action: connect_database
+variables:
+  dbHost:
+    name: Database Host
+    default: localhost
+  dbPort:
+    name: Database Port
+    default: "3306"
+  dbUsername:
+    name: Database Username
+    default: root
+  dbPassword:
+    name: Database Password
+    default: ""
+    placeholder: leave blank if no password
+  dbName:
+    name: Database Name
+    default: rts_warfare
 
+tasks:
   # Download recipe files (server.cfg, logo)
   - action: download_github
     dest: ./tmp/recipe
