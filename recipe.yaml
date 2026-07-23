@@ -3,7 +3,7 @@
 #  Clones 5 RTS resources + 3 dependencies. Generates server.cfg.
 # =============================================================================
 
-name: FiveM RTS: Warfare Tactics V by Enyo Scripts
+name: "FiveM RTS: Warfare Tactics V by Enyo Scripts"
 description: >
   FiveM standalone RTS game mode. Platoon-based combat, 5 battlefield maps,
   24 unit types, CPU AI opponents, SBMM matchmaking, anti-cheat containment.
@@ -99,7 +99,7 @@ tasks:
   - name: Clean temp
     action: fs
     from: ./tmp
-    delete: true
+    "delete": true
 
   # ---- Generate server.cfg ----
   - name: Write server.cfg
