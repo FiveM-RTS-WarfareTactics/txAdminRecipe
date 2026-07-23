@@ -5,11 +5,6 @@ version: 2.1.0
 author: EnyoScripts
 description: FiveM standalone RTS game mode. Platoon-based combat, 5 battlefield maps, 24 unit types, CPU AI opponents, SBMM matchmaking & anti-cheat containment.
 
-variables:
-  dbConnectionString:
-    name: MySQL Connection String
-    default: server=localhost;port=3306;database=rts_warfare;userid=root;password=
-
 tasks:
   # Download recipe files (server.cfg, logo)
   - action: download_github
@@ -25,7 +20,7 @@ tasks:
     src: ./tmp/recipe/rts-logo.png
     dest: ./myLogo.png
 
-  # Download CFX default resources (sessionmanager, baseevents, etc.)
+  # Download CFX default resources
   - action: download_github
     src: https://github.com/citizenfx/cfx-server-data
     subpath: resources
