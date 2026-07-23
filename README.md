@@ -3,8 +3,9 @@
 One-click deploy recipe for the Enyo RTS Tactical Warfare FiveM game mode.
 
 <p align="center">
-  <a href="https://discord.gg/enyo-scripts"><img src="https://img.shields.io/badge/Discord-Join-5865F2?style=for-the-badge&logo=discord&logoColor=white"></a>
-  <a href="https://github.com/enyo-scripts/enyo-rts"><img src="https://img.shields.io/badge/GitHub-Core-181717?style=for-the-badge&logo=github&logoColor=white"></a>
+  <a href="https://discord.gg/PcBKN7VTHY"><img src="https://img.shields.io/badge/Discord-Join-5865F2?style=for-the-badge&logo=discord&logoColor=white"></a>
+  <a href="https://enyo.tebex.io/"><img src="https://img.shields.io/badge/Tebex-Store-00b894?style=for-the-badge&logo=shopify&logoColor=white"></a>
+  <a href="https://github.com/FiveM-RTS-WarfareTactics/enyo-rts"><img src="https://img.shields.io/badge/GitHub-Core-181717?style=for-the-badge&logo=github&logoColor=white"></a>
 </p>
 
 ---
