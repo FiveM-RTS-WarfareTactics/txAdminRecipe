@@ -23,51 +23,18 @@ tasks:
     src: ./tmp/recipe/rts-logo.png
     dest: ./myLogo.png
 
-  # Download CFX default resources (sessionmanager, baseevents, hardcap, yarn)
+  # Download FiveM core system resources (sessionmanager, baseevents, hardcap, yarn)
   - action: download_github
     src: https://github.com/citizenfx/cfx-server-data
-    subpath: resources
-    dest: ./resources/[cfx-default]
+    subpath: resources/[system]
+    dest: ./resources/[system]
 
-  # Strip unwanted default resources
   - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/chat
+    path: ./resources/[system]/rconlog
   - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/chat-theme-gtao
+    path: ./resources/[system]/runcode
   - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/basic-gamemode
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/mapmanager
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/spawnmanager
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/money
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/money-fountain
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/money-fountain-example-map
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/ped-money-drops
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/player-data
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/playernames
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/runcode
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/fivem-map-hipster
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/fivem-map-skater
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/example-loadscreen
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/redm-map-one
-  - action: remove_path
-    path: ./resources/[cfx-default]/[gameplay]/sessionmanager-rdr3
-  - action: remove_path
-    path: ./resources/[cfx-default]/[local]/rconlog
-  - action: remove_path
-    path: ./resources/[cfx-default]/[local]/fivem
+    path: ./resources/[system]/sessionmanager-rdr3
 
   # Download RTS Framework repos
   - action: download_github
