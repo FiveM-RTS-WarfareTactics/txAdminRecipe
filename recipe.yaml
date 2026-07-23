@@ -1,0 +1,167 @@
+# =============================================================================
+#  Enyo RTS - txAdmin Recipe
+#  Clones 5 RTS resources + 3 dependencies. Generates server.cfg.
+# =============================================================================
+
+name: FiveM RTS: Warfare Tactics V by Enyo Scripts
+description: >
+  FiveM standalone RTS game mode. Platoon-based combat, 5 battlefield maps,
+  24 unit types, CPU AI opponents, SBMM matchmaking, anti-cheat containment.
+  No RP framework required.
+
+author: EnyoScripts
+version: 2.1.0
+
+variables:
+  enyo_rts_repo:
+    name: enyo-rts Repo URL
+    default: https://github.com/FiveM-RTS-WarfareTactics/enyo-rts
+  rts_admin_repo:
+    name: rts-admin Repo URL
+    default: https://github.com/FiveM-RTS-WarfareTactics/rts-admin
+  rts_mapbuilder_repo:
+    name: rts-mapbuilder Repo URL
+    default: https://github.com/FiveM-RTS-WarfareTactics/rts-mapbuilder
+  rts_maps_repo:
+    name: rts-maps Repo URL
+    default: https://github.com/FiveM-RTS-WarfareTactics/rts-maps
+  rts_weapons_repo:
+    name: rts-weapons Repo URL
+    default: https://github.com/FiveM-RTS-WarfareTactics/rts-weapons
+  rts_minimap_repo:
+    name: minimap Repo URL
+    default: https://github.com/FiveM-RTS-WarfareTactics/minimap
+
+tasks:
+  # ---- Clone RTS Resources ----
+  - name: Clone enyo-rts (Core)
+    action: clone_repository
+    src: "{{enyo_rts_repo}}"
+    ref: main
+    dest: ./resources/[rts]/enyo-rts
+
+  - name: Clone rts-admin
+    action: clone_repository
+    src: "{{rts_admin_repo}}"
+    ref: main
+    dest: ./resources/[rts]/rts-admin
+
+  - name: Clone rts-mapbuilder
+    action: clone_repository
+    src: "{{rts_mapbuilder_repo}}"
+    ref: main
+    dest: ./resources/[rts]/rts-mapbuilder
+
+  - name: Clone rts-maps
+    action: clone_repository
+    src: "{{rts_maps_repo}}"
+    ref: main
+    dest: ./resources/[rts]/rts-maps
+
+  - name: Clone rts-weapons
+    action: clone_repository
+    src: "{{rts_weapons_repo}}"
+    ref: main
+    dest: ./resources/[rts]/rts-weapons
+
+  - name: Clone minimap
+    action: clone_repository
+    src: "{{rts_minimap_repo}}"
+    ref: main
+    dest: ./resources/[rts]/minimap
+
+  # ---- Download Dependencies ----
+  - name: Download oxmysql
+    action: download_github
+    src: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+    dest: ./resources/[standalone]/oxmysql
+
+  - name: Download screenshot-basic
+    action: download_github
+    src: https://github.com/citizenfx/screenshot-basic/archive/refs/heads/master.zip
+    dest: ./tmp/screenshot-basic
+
+  - name: Move screenshot-basic
+    action: fs
+    from: ./tmp/screenshot-basic/screenshot-basic-master
+    to: ./resources/[standalone]/screenshot-basic
+
+  - name: Download bob74_ipl
+    action: download_github
+    src: https://github.com/Bob74/bob74_ipl/archive/refs/heads/master.zip
+    dest: ./tmp/bob74_ipl
+
+  - name: Move bob74_ipl
+    action: fs
+    from: ./tmp/bob74_ipl/bob74_ipl-master
+    to: ./resources/[standalone]/bob74_ipl
+
+  - name: Clean temp
+    action: fs
+    from: ./tmp
+    delete: true
+
+  # ---- Generate server.cfg ----
+  - name: Write server.cfg
+    action: write_file
+    file: ./server.cfg
+    content: |
+      # =============================================================================
+      #  Enyo RTS - Server Configuration
+      # =============================================================================
+
+      sv_hostname "{{serverName}} built with {{recipeName}}"
+      sets sv_projectName "[{{recipeName}}] {{serverName}}"
+      sets sv_projectDesc "{{recipeDescription}}"
+      sets tags "rts, strategy, warfare, enyo"
+      sets locale "en-US"
+
+      sv_licenseKey "{{svLicense}}"
+      sv_maxclients {{maxClients}}
+      sv_enforceGameBuild 3258
+
+      onesync on
+      onesync_population true
+
+      set mysql_connection_string "{{dbConnectionString}}"
+      {{serverEndpoints}}
+
+      # ---- ACE Permissions ----
+      add_ace group.admin command allow
+      add_ace group.admin command.rtsadmin allow
+      add_ace group.mod command.rtsmod allow
+      add_ace group.support command.rtssupport allow
+
+      add_ace group.admin admin allow
+      add_ace group.mod mod allow
+      add_ace group.support support allow
+
+      add_principal group.admin group.mod
+      add_principal group.mod group.support
+
+      add_principal identifier.fivem:1 group.admin
+
+      # ---- Performance & Security ----
+      set sv_pureLevel 2
+      set sv_maxPing 200
+      set sv_enableNetworkedSounds false
+      set sv_enableNetworkedScriptEntityStates false
+      sv_disableScriptHook 1
+
+      # ---- FiveM Core ----
+      ensure sessionmanager
+      ensure baseevents
+      ensure hardcap
+
+      # ---- Dependencies ----
+      ensure oxmysql
+      ensure screenshot-basic
+      ensure bob74_ipl
+
+      # ---- RTS Framework ----
+      ensure [rts]/minimap
+      ensure [rts]/rts-weapons
+      ensure [rts]/rts-maps
+      ensure [rts]/rts-admin
+      ensure [rts]/rts-mapbuilder
+      ensure [rts]/enyo-rts
