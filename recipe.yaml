@@ -23,18 +23,34 @@ tasks:
     src: ./tmp/recipe/rts-logo.png
     dest: ./myLogo.png
 
-  # Download FiveM core system resources (sessionmanager, baseevents, hardcap, yarn)
+  # Download FiveM core resources individually
   - action: download_github
     src: https://github.com/citizenfx/cfx-server-data
-    subpath: resources/[system]
-    dest: ./resources/[system]
+    subpath: "resources/[system]/sessionmanager"
+    dest: ./resources/[system]/sessionmanager
 
-  - action: remove_path
-    path: ./resources/[system]/rconlog
-  - action: remove_path
-    path: ./resources/[system]/runcode
-  - action: remove_path
-    path: ./resources/[system]/sessionmanager-rdr3
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: "resources/[system]/baseevents"
+    dest: ./resources/[system]/baseevents
+
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: "resources/[system]/hardcap"
+    dest: ./resources/[system]/hardcap
+
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: "resources/[system]/[builders]/yarn"
+    dest: ./resources/[system]/[builders]/yarn
+
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: "resources/[system]/[builders]/webpack"
+    dest: ./resources/[system]/[builders]/webpack
+
+  - action: waste_time
+    seconds: 3
 
   # Download RTS Framework repos
   - action: download_github
