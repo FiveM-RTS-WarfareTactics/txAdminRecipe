@@ -35,25 +35,40 @@ tasks:
     ref: main
     src: https://github.com/FiveM-RTS-WarfareTactics/enyo-rts
 
+  - action: waste_time
+    seconds: 3
+
   - action: download_github
     dest: ./resources/[rts]/rts-admin
     ref: main
     src: https://github.com/FiveM-RTS-WarfareTactics/rts-admin
+
+  - action: waste_time
+    seconds: 3
 
   - action: download_github
     dest: ./resources/[rts]/rts-mapbuilder
     ref: main
     src: https://github.com/FiveM-RTS-WarfareTactics/rts-mapbuilder
 
+  - action: waste_time
+    seconds: 3
+
   - action: download_github
     dest: ./resources/[rts]/rts-maps
     ref: main
     src: https://github.com/FiveM-RTS-WarfareTactics/rts-maps
 
+  - action: waste_time
+    seconds: 3
+
   - action: download_github
     dest: ./resources/[rts]/rts-weapons
     ref: main
     src: https://github.com/FiveM-RTS-WarfareTactics/rts-weapons
+
+  - action: waste_time
+    seconds: 3
 
   - action: download_github
     dest: ./resources/[rts]/minimap
@@ -61,7 +76,7 @@ tasks:
     src: https://github.com/FiveM-RTS-WarfareTactics/minimap
 
   - action: waste_time
-    seconds: 5
+    seconds: 3
 
   # Download dependencies
   - action: download_file
