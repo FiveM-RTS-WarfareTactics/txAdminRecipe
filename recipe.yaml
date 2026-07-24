@@ -49,6 +49,11 @@ tasks:
     subpath: "resources/[system]/[builders]/webpack"
     dest: ./resources/[system]/[builders]/webpack
 
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: "resources/[gameplay]/spawnmanager"
+    dest: ./resources/[gameplay]/spawnmanager
+
   - action: waste_time
     seconds: 3
 
