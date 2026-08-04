@@ -1,0 +1,132 @@
+$engine: 3
+$onesync: on
+name: "FiveM RTS: Warfare Tactics V by Enyo Scripts"
+version: 2.1.0
+author: EnyoScripts
+description: FiveM standalone RTS game mode. Platoon-based combat, 5 battlefield maps, 24 unit types, CPU AI opponents, SBMM matchmaking & anti-cheat containment.
+
+tasks:
+  # Prepare Database
+  - action: connect_database
+
+  # Download recipe assets
+  - action: download_github
+    dest: ./tmp/recipe
+    ref: main
+    src: https://github.com/FiveM-RTS-WarfareTactics/txAdminRecipe
+
+  - action: move_path
+    src: ./tmp/recipe/server.cfg
+    dest: ./server.cfg
+
+  - action: move_path
+    src: ./tmp/recipe/rts-logo.png
+    dest: ./myLogo.png
+
+  # Download FiveM core resources individually
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: "resources/[system]/sessionmanager"
+    dest: ./resources/[system]/sessionmanager
+
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: "resources/[system]/baseevents"
+    dest: ./resources/[system]/baseevents
+
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: "resources/[system]/hardcap"
+    dest: ./resources/[system]/hardcap
+
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: "resources/[system]/[builders]/yarn"
+    dest: ./resources/[system]/[builders]/yarn
+
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: "resources/[system]/[builders]/webpack"
+    dest: ./resources/[system]/[builders]/webpack
+
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: "resources/[gameplay]/spawnmanager"
+    dest: ./resources/[gameplay]/spawnmanager
+
+  - action: waste_time
+    seconds: 3
+
+  # Download RTS Framework repos
+  - action: download_github
+    dest: ./resources/[rts]/enyo-rts
+    ref: main
+    src: https://github.com/FiveM-RTS-WarfareTactics/enyo-rts
+
+  - action: waste_time
+    seconds: 3
+
+  - action: download_github
+    dest: ./resources/[rts]/rts-admin
+    ref: main
+    src: https://github.com/FiveM-RTS-WarfareTactics/rts-admin
+
+  - action: waste_time
+    seconds: 3
+
+  - action: download_github
+    dest: ./resources/[rts]/rts-mapbuilder
+    ref: main
+    src: https://github.com/FiveM-RTS-WarfareTactics/rts-mapbuilder
+
+  - action: waste_time
+    seconds: 3
+
+  - action: download_github
+    dest: ./resources/[rts]/rts-maps
+    ref: main
+    src: https://github.com/FiveM-RTS-WarfareTactics/rts-maps
+
+  - action: waste_time
+    seconds: 3
+
+  - action: download_github
+    dest: ./resources/[rts]/rts-weapons
+    ref: main
+    src: https://github.com/FiveM-RTS-WarfareTactics/rts-weapons
+
+  - action: waste_time
+    seconds: 3
+
+  - action: download_github
+    dest: ./resources/[rts]/minimap
+    ref: main
+    src: https://github.com/FiveM-RTS-WarfareTactics/minimap
+
+  - action: waste_time
+    seconds: 3
+
+  # Download dependencies
+  - action: download_file
+    path: ./tmp/oxmysql.zip
+    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+  - action: unzip
+    dest: ./resources/[standalone]
+    src: ./tmp/oxmysql.zip
+
+  - action: download_github
+    dest: ./resources/[standalone]/screenshot-basic
+    ref: master
+    src: https://github.com/citizenfx/screenshot-basic
+
+  - action: download_github
+    dest: ./resources/[standalone]/bob74_ipl
+    ref: master
+    src: https://github.com/Bob74/bob74_ipl
+
+  - action: waste_time
+    seconds: 5
+
+  # Clean up temp files
+  - action: remove_path
+    path: ./tmp

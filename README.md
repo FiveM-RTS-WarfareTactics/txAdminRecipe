@@ -1,0 +1,47 @@
+# Enyo RTS — txAdmin Recipe
+
+One-click deploy recipe for the Enyo RTS Tactical Warfare FiveM game mode.
+
+<p align="center">
+  <a href="https://discord.gg/PcBKN7VTHY"><img src="https://img.shields.io/badge/Discord-Join-5865F2?style=for-the-badge&logo=discord&logoColor=white"></a>
+  <a href="https://enyo.tebex.io/"><img src="https://img.shields.io/badge/Tebex-Store-00b894?style=for-the-badge&logo=shopify&logoColor=white"></a>
+  <a href="https://github.com/FiveM-RTS-WarfareTactics/enyo-rts"><img src="https://img.shields.io/badge/GitHub-Core-181717?style=for-the-badge&logo=github&logoColor=white"></a>
+</p>
+
+---
+
+## What This Installs
+
+| Resource | Repo |
+|----------|------|
+| `enyo-rts` | [github.com/FiveM-RTS-WarfareTactics/enyo-rts](https://github.com/FiveM-RTS-WarfareTactics/enyo-rts) |
+| `rts-admin` | [github.com/FiveM-RTS-WarfareTactics/rts-admin](https://github.com/FiveM-RTS-WarfareTactics/rts-admin) |
+| `rts-mapbuilder` | [github.com/FiveM-RTS-WarfareTactics/rts-mapbuilder](https://github.com/FiveM-RTS-WarfareTactics/rts-mapbuilder) |
+| `rts-maps` | [github.com/FiveM-RTS-WarfareTactics/rts-maps](https://github.com/FiveM-RTS-WarfareTactics/rts-maps) |
+| `rts-weapons` | [github.com/FiveM-RTS-WarfareTactics/rts-weapons](https://github.com/FiveM-RTS-WarfareTactics/rts-weapons) |
+| `minimap` | [github.com/FiveM-RTS-WarfareTactics/minimap](https://github.com/FiveM-RTS-WarfareTactics/minimap) |
+| `oxmysql` | [github.com/overextended/oxmysql](https://github.com/overextended/oxmysql) |
+| `screenshot-basic` | [github.com/citizenfx/screenshot-basic](https://github.com/citizenfx/screenshot-basic) |
+| `bob74_ipl` | [github.com/Bob74/bob74_ipl](https://github.com/Bob74/bob74_ipl) |
+
+## Usage
+
+In txAdmin, go to **Recipe Deployer** → **Custom Recipe** → paste this repo URL or upload the folder.
+
+### Variables
+
+| Variable | Default |
+|----------|---------|
+| `sv_licenseKey` | `changeme` |
+| `server_name` | `Enyo RTS - Tactical Warfare V` |
+| `max_players` | `32` |
+| `mysql_host` | `localhost` |
+| `mysql_database` | `rts_warfare` |
+
+## Server Config
+
+The generated `server.cfg` uses these template variables: `{{serverName}}`, `{{svLicense}}`, `{{maxClients}}`, `{{dbConnectionString}}`, `{{serverEndpoints}}`.
+
+## License
+
+Apache 2.0
