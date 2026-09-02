@@ -1,7 +1,7 @@
 $engine: 3
 $onesync: on
 name: "FiveM RTS: Warfare Tactics V by Enyo Scripts"
-version: 2.1.0
+version: 2.1.1
 author: EnyoScripts
 description: FiveM standalone RTS game mode. Platoon-based combat, 5 battlefield maps, 24 unit types, CPU AI opponents, SBMM matchmaking & anti-cheat containment.
 
@@ -11,6 +11,7 @@ tasks:
 
   # Download recipe assets
   - action: download_github
+    timeoutSeconds: 900
     dest: ./tmp/recipe
     ref: main
     src: https://github.com/FiveM-RTS-WarfareTactics/txAdminRecipe
@@ -25,6 +26,7 @@ tasks:
 
   # Download FiveM core resources
   - action: download_github
+    timeoutSeconds: 900
     src: https://github.com/citizenfx/cfx-server-data
     ref: e265cb251c88260533c847d4a1a2838c7d828a66
     subpath: resources
@@ -59,31 +61,37 @@ tasks:
 
   # Download RTS Framework repos
   - action: download_github
+    timeoutSeconds: 900
     dest: ./resources/[rts]/enyo-rts
     ref: main
     src: https://github.com/FiveM-RTS-WarfareTactics/enyo-rts
 
   - action: download_github
+    timeoutSeconds: 900
     dest: ./resources/[rts]/rts-admin
     ref: main
     src: https://github.com/FiveM-RTS-WarfareTactics/rts-admin
 
   - action: download_github
+    timeoutSeconds: 900
     dest: ./resources/[rts]/rts-mapbuilder
     ref: main
     src: https://github.com/FiveM-RTS-WarfareTactics/rts-mapbuilder
 
   - action: download_github
+    timeoutSeconds: 900
     dest: ./resources/[rts]/rts-maps
     ref: main
     src: https://github.com/FiveM-RTS-WarfareTactics/rts-maps
 
   - action: download_github
+    timeoutSeconds: 900
     dest: ./resources/[rts]/rts-weapons
     ref: main
     src: https://github.com/FiveM-RTS-WarfareTactics/rts-weapons
 
   - action: download_github
+    timeoutSeconds: 900
     dest: ./resources/[rts]/minimap
     ref: main
     src: https://github.com/FiveM-RTS-WarfareTactics/minimap
@@ -92,16 +100,19 @@ tasks:
   - action: download_file
     path: ./tmp/oxmysql.zip
     url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+
   - action: unzip
     dest: ./resources/[standalone]
     src: ./tmp/oxmysql.zip
 
   - action: download_github
+    timeoutSeconds: 900
     dest: ./resources/[standalone]/screenshot-basic
     ref: master
     src: https://github.com/citizenfx/screenshot-basic
 
   - action: download_github
+    timeoutSeconds: 900
     dest: ./resources/[standalone]/bob74_ipl
     ref: master
     src: https://github.com/Bob74/bob74_ipl
