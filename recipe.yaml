@@ -1,6 +1,6 @@
 $engine: 3
 $onesync: on
-name: "FiveM RTS: Warfare Tactics V by Enyo Scripts"
+name: "WarfareTacticsV"
 version: 2.1.1
 author: EnyoScripts
 description: FiveM standalone RTS game mode. Platoon-based combat, 5 battlefield maps, 24 unit types, CPU AI opponents, SBMM matchmaking & anti-cheat containment.
